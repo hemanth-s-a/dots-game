@@ -1,0 +1,14 @@
+.dot {
+    width: 8px;
+    height: 8px;
+}
+
+.verticalLine {
+    width: 8px;
+    height: 36px;
+}
+
+.horizontalLine {
+    width: 36px;
+    height: 8px;
+}

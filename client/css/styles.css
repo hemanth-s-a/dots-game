@@ -12,3 +12,13 @@
     width: 36px;
     height: 8px;
 }
+
+.box {
+    width: 36px;
+    height: 36px;
+}
+
+.dotsGrid td {
+    padding: 0;
+    border: 0;
+}

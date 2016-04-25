@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         },
         watch: {
             copy: {
-                files: ["client/**/*.html"],
+                files: ["client/**/*.html", "client/**/*.css"],
                 tasks: ["copy"]
             },
             babel: {

@@ -1,7 +1,7 @@
 "use strict";
 
 import React from "react";
-import Dot from "./dot.jsx"
+import Row from "./row.jsx";
 
 export default class extends React.Component {
     constructor(props) {
@@ -9,20 +9,29 @@ export default class extends React.Component {
     }
 
     render() {
-        let gridRows = [];
-        for(let i = 0; i <= this.props.width; i++) {
-            let horizontal = [], vertical = [];
-            for(let j = 0; j <= this.props.height; j++) {
-                horizontal.push(<td>
-                    <Dot imageState="black" cssClass="dot" />
-                    </td>);
-            }
-            gridRows[i*2] = horizontal;
-            gridRows[i*2+1] = vertical;
+        let gridRows = [], i,
+        horizontalProps = [{
+            imageState: "black",
+            cssClass: "dot"
+        }, {
+            imageState: "blank",
+            cssClass: "horizontalLine"
+        }],
+        verticalProps = [{
+            imageState: "blank",
+            cssClass: "verticalLine"
+        }, {
+            imageState: "blank",
+            cssClass: "box"
+        }];
+        for(i = 0; i < this.props.height; i++) {
+            gridRows.push(<Row key={i*2} keyValue={i*2} width={this.props.width} drawProps={horizontalProps} />);
+            gridRows.push(<Row key={i*2+1} keyValue={i*2+1} width={this.props.width} drawProps={verticalProps} />);
         }
-        return <table>
+        gridRows.push(<Row key={i*2} keyValue={i*2} width={this.props.width} drawProps={horizontalProps} />);
+        return <table className="dotsGrid">
             <tbody>
-                {}
+                {gridRows}
             </tbody>
         </table>;
     }

@@ -22,7 +22,9 @@ export default class extends React.Component {
             case "blue":
                 imageState = "/blue.gif";
                 break;
+            default:
+                imageState = "/blank.gif";
         }
-        return <img src="/dot.gif" className={this.props.cssClass} />;
+        return <img key={this.props.keyValue} src={"/images" + imageState} className={this.props.cssClass} />;
     }
 }

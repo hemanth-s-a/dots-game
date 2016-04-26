@@ -8,15 +8,19 @@ export default class extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            dotState: (this.props.dotState ? this.props.dotState : "dot")
-        }
-        if (Constants[this.state.dotState].fixed) {
-            this.state.fixed = true;
+            dotState: (props.dotState ? props.dotState : "dot")
         }
 
         this.mouseOver = this.mouseOver.bind(this);
         this.mouseOut = this.mouseOut.bind(this);
-        this.click = this.click.bind(this);
+    }
+
+    componentWillReceiveProps(newProps) {
+        if (newProps.dotState != this.state.dotState) {
+            this.setState({
+                dotState: (newProps.dotState ? newProps.dotState : "dot")
+            });
+        }
     }
 
     mouseOver() {
@@ -37,10 +41,6 @@ export default class extends React.Component {
         });
     }
 
-    click(e) {
-
-    }
-
     render() {
         let classes = classNames({
             [Constants[this.state.dotState].cssClass]: true,
@@ -48,7 +48,8 @@ export default class extends React.Component {
         });
         return <div className={classes}
             onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}
-            onClick={this.click}>
+            onClick={this.props.clickAction.bind(null,
+                this.state.dotState.replace(this.props.hoverColor, ""))}>
         </div>;
     }
 }

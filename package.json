@@ -18,8 +18,10 @@
   "homepage": "https://github.com/hemanth-s-a/dots-game#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "classnames": "^2.2.3",
     "cors": "^2.7.1",
     "express": "^4.13.4",
+    "jquery": "^2.2.3",
     "morgan": "^1.7.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

@@ -22,3 +22,24 @@
     padding: 0;
     border: 0;
 }
+
+.redBackground {
+    background: red;
+}
+
+.blueBackground {
+    background: blue;
+}
+
+.blankBackground {
+    background: white;
+}
+
+.blackBackground {
+    background: black;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}

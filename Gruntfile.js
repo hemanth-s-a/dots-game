@@ -89,7 +89,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-webpack");
 
-    grunt.registerTask("default", [
+    grunt.registerTask("dev", [
         "copy", "babel", "webpack", "watch"
+    ]);
+
+    grunt.registerTask("default", [
+        "copy", "babel", "webpack"
     ]);
 };

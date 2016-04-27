@@ -37,8 +37,8 @@ for(let i = 0; i < height; i++) {
 function render() {
     ReactDOM.render(
         React.createElement(DotsGrid, {
-            width: 8,
-            height: 8,
+            width: width,
+            height: height,
             game: game,
             drawLine: drawLine.bind(game)
         }),

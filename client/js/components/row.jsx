@@ -13,6 +13,7 @@ export default class extends React.Component {
         return <td key={i}>
             <Dot dotState={cellState}
                 clickAction={clickAction}
+                turn={this.props.turn}
                 hoverColor={this.props.hoverColor} />
         </td>;
     }

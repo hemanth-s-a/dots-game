@@ -10,12 +10,28 @@ export default class extends React.Component {
         this.state = {
             horizontal: this.props.game.horizontal,
             vertical: this.props.game.vertical,
-            boxes: this.props.game.boxes
+            boxes: this.props.game.boxes,
+            color: this.props.game.color,
+            turn: this.props.game.turn
         };
         this.renderRow = this.renderRow.bind(this);
         this.click = this.click.bind(this);
         this.setArrayElement = this.setArrayElement.bind(this);
         this.socket = io.connect();
+        this.setupConnection();
+    }
+
+    setupConnection() {
+        this.socket.emit(this.state.color, "start");
+        this.socket.on("client", (data) => {
+            console.log("Recieved " + this.state.color);
+            this.setState({
+                horizontal: data.horizontal,
+                vertical: data.vertical,
+                boxes: data.boxes,
+                turn: data.turn
+            });
+        });
     }
 
     cloneArray(oldArray) {
@@ -30,6 +46,7 @@ export default class extends React.Component {
         return <Row key={i}
             clickAction={clickAction}
             width={width}
+            turn={this.state.turn}
             hoverColor={this.props.game.color}
             rowFirstPart={firstPart}
             rowSecondPart={secondPart} />;
@@ -42,23 +59,15 @@ export default class extends React.Component {
     }
 
     click(row, column, lineType, event) {
-        console.log("a");
-        switch(lineType) {
-            case "hLine":
-                this.setState({
-                    horizontal: this.setArrayElement(
-                        this.state.horizontal,
-                        row, column, lineType, "Black")
-                });
-                break;
-            case "vLine":
-                this.setState({
-                    vertical: this.setArrayElement(
-                        this.state.vertical,
-                        row, column, lineType, "Black")
-                });
-                break;
+        if (this.state.turn !== this.state.color) {
+            return;
         }
+        console.log("a");
+        this.socket.emit(this.state.color, {
+            row: row,
+            column: column,
+            lineType: lineType
+        });
     }
 
     render() {

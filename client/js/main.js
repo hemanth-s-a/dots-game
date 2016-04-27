@@ -1,18 +1,17 @@
 "use strict";
 
-import io from "socket.io-client";
 import React from "react";
 import ReactDOM from "react-dom";
 import DotsGrid from "./components/dotsGrid.jsx";
 import $ from "jquery";
 
-let socket = io.connect(),
-game = {},
+let game = {},
 width = 8, height = 8;
 
 game.horizontal = [];
 game.vertical = [];
 game.boxes = [];
+// game.turn = "Blue";
 
 for(let i = 0; i <= height; i++) {
     game.horizontal[i] = [];
@@ -35,14 +34,6 @@ for(let i = 0; i < height; i++) {
     }
 }
 
-socket.on("init", data => {
-    console.log(data);
-});
-
-socket.emit("message", {
-    value: "sending message"
-});
-
 function render() {
     ReactDOM.render(
         React.createElement(DotsGrid, {
@@ -60,6 +51,7 @@ let drawLine = function() {
 
 $("input[name='color']").change(function() {
     game.color = this.value;
+    game.turn = this.value;
     $("#inputBox").remove();
     render();
 });

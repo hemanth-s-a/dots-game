@@ -24,7 +24,7 @@ export default class extends React.Component {
     }
 
     mouseOver() {
-        if (Constants[this.state.dotState].fixed) {
+        if (Constants[this.state.dotState].fixed || this.props.turn !== this.props.hoverColor) {
             return;
         }
         this.setState({
@@ -33,7 +33,7 @@ export default class extends React.Component {
     }
 
     mouseOut() {
-        if (Constants[this.state.dotState].fixed) {
+        if (Constants[this.state.dotState].fixed || this.props.turn !== this.props.hoverColor) {
             return;
         }
         this.setState({

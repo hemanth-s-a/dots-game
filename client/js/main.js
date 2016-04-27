@@ -6,7 +6,7 @@ import DotsGrid from "./components/dotsGrid.jsx";
 import $ from "jquery";
 
 let game = {},
-width = 8, height = 8;
+width = 4, height = 4;
 
 game.horizontal = [];
 game.vertical = [];

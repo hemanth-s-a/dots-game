@@ -49,7 +49,7 @@ export default class extends React.Component {
         return <div className={classes}
             onMouseOver={this.mouseOver} onMouseOut={this.mouseOut}
             onClick={this.props.clickAction.bind(null,
-                this.state.dotState.replace(this.props.hoverColor, ""))}>
+                this.state.dotState)}>
         </div>;
     }
 }

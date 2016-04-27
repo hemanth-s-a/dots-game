@@ -58,7 +58,11 @@ export default class extends React.Component {
         return array.slice(0, i).concat([innerArray], array.slice(i+1));
     }
 
-    click(row, column, lineType, event) {
+    click(row, column, lineTypeParameter, event) {
+        if (lineTypeParameter.indexOf("Black") > -1) {
+            return;
+        }
+        let lineType = lineTypeParameter.replace(this.state.color, "");
         if (this.state.turn !== this.state.color
             && !(lineType == "vLine" || lineType == "hLine")) {
             return;

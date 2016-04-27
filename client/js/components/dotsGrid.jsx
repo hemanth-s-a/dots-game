@@ -63,8 +63,10 @@ export default class extends React.Component {
             return;
         }
         let lineType = lineTypeParameter.replace(this.state.color, "");
-        if (this.state.turn !== this.state.color
-            && !(lineType == "vLine" || lineType == "hLine")) {
+        if (lineType != "hLine" && lineType != "vLine") {
+            return;
+        }
+        if (this.state.turn !== this.state.color) {
             return;
         }
         console.log("a");

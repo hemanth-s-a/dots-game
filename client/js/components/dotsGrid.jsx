@@ -60,7 +60,7 @@ export default class extends React.Component {
 
     click(row, column, lineType, event) {
         if (this.state.turn !== this.state.color
-            || !(lineType == "vLine" || lineType == "hLine")) {
+            && !(lineType == "vLine" || lineType == "hLine")) {
             return;
         }
         console.log("a");

@@ -55,7 +55,7 @@ setArrayElement = (array, i, j, line, addition) => {
     innerArray = innerArray.slice(0, j).concat(line + addition, innerArray.slice(j+1));
     return array.slice(0, i).concat([innerArray], array.slice(i+1));
 },
-game = {}, height = 8, width = 8,
+game = {}, height = 4, width = 4,
 setupGame = () => {
     game.horizontal = [];
     game.vertical = [];

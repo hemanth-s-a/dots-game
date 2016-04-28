@@ -163,7 +163,7 @@ checkAndUpdateBoxes = (data) => {
                     game.boxes[row-1][column] += game.turn;
                     flag = false;
                 }
-                if (game.horizontal[row][column].indexOf("Black") > -1
+                if (game.horizontal[row+1][column].indexOf("Black") > -1
                     && game.vertical[row][column].indexOf("Black") > -1
                     && game.vertical[row][column+1].indexOf("Black") > -1) {
                     game.boxes[row][column] += game.turn;
@@ -195,7 +195,7 @@ checkAndUpdateBoxes = (data) => {
                     game.boxes[row-1][column] += game.turn;
                     flag = false;
                 }
-                if (game.horizontal[row][column].indexOf("Black") > -1
+                if (game.horizontal[row+1][column].indexOf("Black") > -1
                     && game.vertical[row][column].indexOf("Black") > -1
                     && game.vertical[row][column+1].indexOf("Black") > -1) {
                     game.boxes[row][column] += game.turn;
